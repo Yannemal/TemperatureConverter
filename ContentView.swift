@@ -1,9 +1,9 @@
 //
 //  ContentView.swift
 //  TemperatureConverter
-//
+//  Day 19 challenge - 100Days of SwiftUI by @TwoStraws Paul Hudson
 //  Created by Yannemal on 6/19/23.
-//
+//  This app converts one scale of temperature to another
 
 import SwiftUI
 
@@ -23,7 +23,7 @@ struct ContentView: View {
         // animals = animals.filter(){$0 != "chimps"}
         return tempSelection.filter(){$0 != tempType}
     }
-    // computed property
+    // MARK: - Computed Property
     // 1. give me a string that states what we are doing
     var actionAsText : String {
         //internalise
@@ -39,24 +39,21 @@ struct ContentView: View {
             print("\(currentDegrees) Celsius to Fahrenheit_")
             currentSetting = "Celsius to Fahrenheit"
         } else if currentChoiceTemp == "Celsius" && currentChoiceConvertTo == "Kelvin" {
-            // why wont it print to console ??
-            print("\(currentDegrees) Celsius to Kelvin_")
+            //print("\(currentDegrees) Celsius to Kelvin_")
             currentSetting = "Celsius to Kelvin"
         } else if currentChoiceTemp == "Fahrenheit" && currentChoiceConvertTo == "Celsius" {
-            // why wont it print to console ??
-            print("\(currentDegrees) Fahrenheit to Celsius_")
+            //print("\(currentDegrees) Fahrenheit to Celsius_")
             currentSetting = "Fahrenheit to Celsius"
         } else if currentChoiceTemp == "Fahrenheit" && currentChoiceConvertTo == "Kelvin" {
             // why wont it print to console ??
-            print("\(currentDegrees) Fahrenheit to Kelvin_")
+            //print("\(currentDegrees) Fahrenheit to Kelvin_")
             currentSetting = "Fahrenheit to Kelvin"
         } else if currentChoiceTemp == "Kelvin" && currentChoiceConvertTo == "Celsius" {
-            // why wont it print to console ??
-            print("\(currentDegrees) Kelvin to Celsius_")
+            //print("\(currentDegrees) Kelvin to Celsius_")
             currentSetting = "Kelvin to Celsius"
         } else if currentChoiceTemp == "Kelvin" && currentChoiceConvertTo == "Fahrenheit" {
-            // why wont it print to console ??
-            print("\(currentDegrees) Kelvin to Fahrenheit_")
+         
+            //print("\(currentDegrees) Kelvin to Fahrenheit_")
             currentSetting = "Kelvin to Fahrenheit"
         }
         // why wont it print to console ??
@@ -93,14 +90,21 @@ struct ContentView: View {
             
             
         } else if currentChoiceTemp == "Fahrenheit" && currentChoiceConvertTo == "Kelvin" {
-           
+           // https://www.cuemath.com/fahrenheit-to-kelvin-formula/
+            
+            freshResult = Int((currentDegreesDouble - 32) * 5/9 + 273.15)
+            
         } else if currentChoiceTemp == "Kelvin" && currentChoiceConvertTo == "Celsius" {
+            // https://www.cuemath.com/kelvin-to-celsius-formula/
+            
+            freshResult = Int(currentDegreesDouble - 273.15)
             
         } else if currentChoiceTemp == "Kelvin" && currentChoiceConvertTo == "Fahrenheit" {
-           
+           // https://www.cuemath.com/kelvin-to-fahrenheit-formula/
+            
+            freshResult = Int((currentDegreesDouble - 273.15) * 1.8 + 32  )
         }
-        // why wont it print to console ??
-        print(freshResult)
+       
         return freshResult
     }
 
@@ -124,7 +128,7 @@ struct ContentView: View {
                 Section{
                     
                     Picker("choose temperature", selection: $tempChosen) {
-                        ForEach(0..<250) // no id: \.self for integer range
+                        ForEach(0..<576) // no id: \.self for integer range
                         {
                             Text("\($0)")
                         }
